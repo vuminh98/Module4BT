@@ -17,6 +17,7 @@ function getAllProduct() {
     });
 }
 
+
 function displayProduct(product) {
     return `<tr><td>${product.name}</td>
                 <td>${product.price}</td>
@@ -24,6 +25,8 @@ function displayProduct(product) {
         <td><button class="btn btn-danger" onclick="deleteProduct(${product.id})">Delete</button>
         <button class="btn btn-warning" onclick="updateProduct(${product.id})">Update</button></td></tr>`;
 }
+
+
 
 function findAllCategory(product) {
     $.ajax({
@@ -174,5 +177,58 @@ function search() {
             document.getElementById('list_product').innerHTML = content;
         }
     });
+}
 
+//chuyen trang
+
+function getAllProductPage(page) {
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/product/page?page=" + page + "&size=2",
+        success: function (data) {
+            displayProductPage(data.content)
+            displayPage(data)
+            if (data.pageable.pageNumber === 0) {
+                document.getElementById("backup").hidden = true
+            }
+            if (data.pageable.pageNumber + 1 === data.totalPages) {
+                document.getElementById("next").hidden = true
+            }
+        }
+    });
+    event.preventDefault()
+}
+
+function displayProductPage(data) {
+    let content = '<tr>\n' +
+        '           <td>Name</td>\n' +
+        '           <td>Price</td>\n' +
+        '           <td>Category</td>\n' +
+        '        <td colspan="3" style="padding-left:  50px">Action</td>\n' +
+        '           </tr>';
+    for (let i = 0; i < data.length; i++) {
+        content += `<tr><td>${data[i].name}</td>
+            <td>${data[i].price}</td>
+            <td>${data[i].category.name}</td>
+            <td><button class="btn btn-danger" onclick="deleteProduct(${data[i].id})">Delete</button>
+                <button class="btn btn-warning" onclick="updateProduct(${data[i].id})">Update</button></td></tr>`;
+    }
+    document.getElementById("list_product").innerHTML = content;
+}
+
+function displayPage(data) {
+    let content = `<button class="btn btn-primary" id="backup" onclick="isPrevious(${data.pageable.pageNumber})">Previous</button>
+<span >${data.pageable.pageNumber+1} | ${data.totalPages}</span>
+<button class="btn btn-primary"  id="next" " onclick="isNext(${data.pageable.pageNumber})">Next</button>`
+    document.getElementById("page").innerHTML = content;
+}
+
+//hàm lùi page
+function isPrevious(pageNumber) {
+    getAllProductPage(pageNumber-1)
+}
+
+//hàm tiến page
+function isNext(pageNumber) {
+    getAllProductPage(pageNumber+1)
 }

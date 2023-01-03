@@ -3,6 +3,9 @@ package com.example.demo.controller;
 import com.example.demo.model.Product;
 import com.example.demo.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +23,11 @@ public class ProductController {
     @GetMapping
     public ResponseEntity<Iterable<Product>> findAll() {
         return new ResponseEntity<>(productService.findAll(), HttpStatus.OK);
+    }
+
+    @GetMapping("/page")
+    public ResponseEntity<Page<Product>> findAll(@PageableDefault(size = 3) Pageable pageable) {
+        return new ResponseEntity<>(productService.findAllPage(pageable), HttpStatus.OK);
     }
 
     @GetMapping("/search")

@@ -9,7 +9,7 @@
   <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 </head>
-<body onload="getAllProduct()">
+<body onload="getAllProductPage(0)">
 <h1 style="text-align: center; color: black">List Product</h1>
 <button class="btn btn-outline-primary" onclick="displayCreateForm()">Create new product</button>
 <button class="btn btn-outline-primary" onclick="location.href='category.html'">View List Category</button>
@@ -17,8 +17,8 @@
   <button type="submit" class="btn btn-secondary" onclick="search()">Search</button>
 <div class="container">
   <table class="table table-striped" id="list_product"></table>
+  <div id="page" style="text-align: center"></div>
 </div>
-<div id="list_category"></div>
 <div id="create" hidden>
   <form>
     <h1>Create form</h1>
