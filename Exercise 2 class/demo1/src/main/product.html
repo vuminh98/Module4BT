@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+</head>
+<body onload="getAllProduct()">
+<h1 style="text-align: center; color: black">List Product</h1>
+<button class="btn btn-outline-primary" onclick="displayCreateForm()">Create new product</button>
+<button class="btn btn-outline-primary" onclick="location.href='category.html'">View List Category</button>
+  <input type="text" id="search" style="margin-left: 800px; ">
+  <button type="submit" class="btn btn-secondary" onclick="search()">Search</button>
+<div class="container">
+  <table class="table table-striped" id="list_product"></table>
+</div>
+<div id="list_category"></div>
+<div id="create" hidden>
+  <form>
+    <h1>Create form</h1>
+    <table>
+      <tr>
+        <td>Name</td>
+        <td><label><input type="text" id="name"></label></td>
+      </tr>
+      <tr>
+        <td>Price</td>
+        <td><label><input type="text" id="price"></label></td>
+      </tr>
+      <tr>
+        <td>Category</td>
+        <td id="categoryForm"></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <button onclick="createProduct()">Create</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+
+<div id="update" hidden>
+  <form>
+    <h1>Update form</h1>
+    <table>
+      <tr>
+        <td>Name</td>
+        <td><label><input type="text" id="nameUpdate"></label></td>
+      </tr>
+      <tr>
+        <td>Price</td>
+        <td><label><input type="text" id="priceUpdate"></label></td>
+      </tr>
+      <tr>
+        <td>Category</td>
+        <td id="categoryUpdate"></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <button onclick="update()">Update</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+</body>
+<script src="product.js"></script>
+</html>

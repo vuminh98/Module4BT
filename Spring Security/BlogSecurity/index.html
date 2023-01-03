@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <style>
+        button {
+            margin: 10px;
+        }
+
+        table {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body onload="getAllBlog()">
+<button onclick="displayCreateForm()">Create new blog</button>
+<div id="list_blog"></div>
+<div id="list_category"></div>
+<div id="create" hidden>
+    <form>
+        <h1>Create form</h1>
+        <table>
+            <tr>
+                <td>Title</td>
+                <td><label><input type="text" id="title"></label></td>
+            </tr>
+            <tr>
+                <td>Contents</td>
+                <td><label><input type="text" id="contents"></label></td>
+            </tr>
+            <tr>
+                <td>Author</td>
+                <td><label><input type="text" id="author"></label></td>
+            </tr>
+            <tr>
+                <td id="category" name="category">Category</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button onclick="createBlog()">Create</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<div id="update" hidden>
+    <form>
+        <h1>Update form</h1>
+        <table>
+            <tr>
+                <td>Title</td>
+                <td><label><input type="text" id="title1"></label></td>
+            </tr>
+            <tr>
+                <td>Contents</td>
+                <td><label><input type="text" id="contents1"></label></td>
+            </tr>
+            <tr>
+                <td>Author</td>
+                <td><label><input type="text" id="author1"></label></td>
+            </tr>
+            <tr>
+                <td>Category</td>
+                <td><label><input type="text" id="category1"></label></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button onclick="update()">Update</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+<script src="index.js"></script>
+</html>
